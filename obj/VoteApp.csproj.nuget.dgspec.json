@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Visual Studio\\VoteApp\\VoteApp\\VoteApp.csproj": {}
+    "E:\\Visual Studio\\Git\\VoteApp\\VoteApp.csproj": {}
   },
   "projects": {
-    "E:\\Visual Studio\\VoteApp\\VoteApp\\VoteApp.csproj": {
+    "E:\\Visual Studio\\Git\\VoteApp\\VoteApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Visual Studio\\VoteApp\\VoteApp\\VoteApp.csproj",
+        "projectUniqueName": "E:\\Visual Studio\\Git\\VoteApp\\VoteApp.csproj",
         "projectName": "VoteApp",
-        "projectPath": "E:\\Visual Studio\\VoteApp\\VoteApp\\VoteApp.csproj",
+        "projectPath": "E:\\Visual Studio\\Git\\VoteApp\\VoteApp.csproj",
         "packagesPath": "C:\\Users\\shashinma\\.nuget\\packages\\",
-        "outputPath": "E:\\Visual Studio\\VoteApp\\VoteApp\\obj\\",
+        "outputPath": "E:\\Visual Studio\\Git\\VoteApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
