@@ -1,5 +1,4 @@
-﻿using System;
-using VoteApp.ViewModels;
+﻿using VoteApp.ViewModels;
 
 namespace VoteApp.BLL.Service
 {
@@ -12,4 +11,3 @@ namespace VoteApp.BLL.Service
 		PagedResult<UserViewModel> GetAllTeachers(int pageNumber, int pageSize);
 	}
 }
-

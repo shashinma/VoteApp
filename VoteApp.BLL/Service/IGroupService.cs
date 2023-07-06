@@ -1,5 +1,4 @@
-﻿using System;
-using VoteApp.DAL;
+﻿using VoteApp.DAL;
 using VoteApp.ViewModels;
 
 namespace VoteApp.BLL.Service
@@ -15,4 +14,3 @@ namespace VoteApp.BLL.Service
 		GroupViewModel GetById(int groupId);
 	}
 }
-

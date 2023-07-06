@@ -27,6 +27,7 @@ namespace VoteApp.BLL.Service
             {
                 return null;
             }
+
             return vm;
         }
 
@@ -79,6 +80,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return Enumerable.Empty<Students>();
         }
 
@@ -108,6 +110,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return Enumerable.Empty<ResultViewModel>();
         }
 
@@ -146,6 +149,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return false;
         }
 
@@ -169,6 +173,7 @@ namespace VoteApp.BLL.Service
                         }
                     }
                     _unitOfWork.Save();
+
                     return true;
                 }
             }
@@ -176,6 +181,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return false;
         }
 
@@ -197,6 +203,7 @@ namespace VoteApp.BLL.Service
             {
                 throw;
             }
+
             return vm;
         }
     }

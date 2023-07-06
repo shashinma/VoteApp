@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using VoteApp.DAL;
 using VoteApp.DAL.UnitOfWork;
 using VoteApp.ViewModels;
@@ -29,6 +28,7 @@ namespace VoteApp.BLL.Service
             {
                 return null;
             }
+
             return groupVM;
         }
 
@@ -80,6 +80,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return Enumerable.Empty<Groups>();
         }
 
@@ -94,6 +95,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return null;
         }
     }

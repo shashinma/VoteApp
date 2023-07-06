@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using VoteApp.DAL;
 using VoteApp.DAL.UnitOfWork;
 using VoteApp.ViewModels;
@@ -37,6 +36,7 @@ namespace VoteApp.BLL.Service
                 _iLogger.LogError(ex.Message);
                 return false;
             }
+
             return true;
         }
 
@@ -68,6 +68,7 @@ namespace VoteApp.BLL.Service
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
+
             return result;
         }
 
@@ -96,8 +97,10 @@ namespace VoteApp.BLL.Service
                 {
                     vm.Id = student.Id;
                 }
+
                 return vm;
             }
+
             return null;
         }
     }

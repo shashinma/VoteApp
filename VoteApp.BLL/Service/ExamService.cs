@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using VoteApp.DAL;
 using VoteApp.DAL.UnitOfWork;
 using VoteApp.ViewModels;
@@ -68,7 +67,6 @@ namespace VoteApp.BLL.Service
         private List<ExamViewModel> ExamListInfo(List<Exams> modelList)
         {
             return modelList.Select(o => new ExamViewModel(o)).ToList();
-
         }
 
         public IEnumerable<Exams> GetAllExams()
@@ -82,6 +80,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
+
             return Enumerable.Empty<Exams>();
         }
     }
