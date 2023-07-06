@@ -32,6 +32,10 @@ namespace VoteApp.ViewModels
 			UserId = model.UserId;
 		}
 
+        public GroupViewModel()
+        {
+        }
+
         public Groups ConvertGroupsViewModel(GroupViewModel vm)
 		{
 			return new Groups
