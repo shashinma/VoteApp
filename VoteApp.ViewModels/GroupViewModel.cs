@@ -6,7 +6,11 @@ namespace VoteApp.ViewModels
 {
 	public class GroupViewModel
 	{
-		public int Id { get; set; }
+        public GroupViewModel()
+        {
+        }
+
+        public int Id { get; set; }
 
 		[Required]
 		[Display(Name = "Group Name")]
@@ -31,10 +35,6 @@ namespace VoteApp.ViewModels
 			Description = model.Description ?? "";
 			UserId = model.UserId;
 		}
-
-        public GroupViewModel()
-        {
-        }
 
         public Groups ConvertGroupsViewModel(GroupViewModel vm)
 		{
