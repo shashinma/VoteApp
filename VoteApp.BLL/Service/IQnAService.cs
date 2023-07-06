@@ -10,7 +10,7 @@ namespace VoteApp.BLL.Service
 
 		Task<QnAsViewModel> AddAsync(QnAsViewModel QnAVM);
 
-		IEnumerable<QnAsViewModel> GetAllExams();
+		IEnumerable<QnAsViewModel> GetAllQnAByExams(int examId);
 
 		bool IsExamAttended(int examId, int studentId);
 	}
