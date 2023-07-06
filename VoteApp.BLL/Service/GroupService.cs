@@ -74,6 +74,7 @@ namespace VoteApp.BLL.Service
             try
             {
                 var groups = _unitofwork.GenericRepository<Groups>().GetAll();
+                return groups;
             }
             catch (Exception ex)
             {
