@@ -70,7 +70,16 @@ namespace VoteApp.BLL.Service
 
         public IEnumerable<Students> GetAllStudents()
         {
-            
+            try
+            {
+                var students = _unitOfWork.GenericRepository<Students>().GetAll();
+                return students;
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+            }
+            return Enumerable.Empty<Students>();
         }
 
         public IEnumerable<ResultViewModel> GetExamResult(int studentId)
@@ -119,17 +128,76 @@ namespace VoteApp.BLL.Service
 
         public bool SetExamResult(AttendExamViewModel vm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                foreach (var item in vm.QnAs)
+                {
+                    ExamResults examResults = new ExamResults();
+                    examResults.StudentId = vm.StudentId;
+                    examResults.QnAsId = item.Id;
+                    examResults.ExamsId = item.ExamsId;
+                    examResults.Answer = item.SelectedAnswer;
+                    _unitOfWork.GenericRepository<ExamResults>().AddAsync(examResults);
+
+                }
+                _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+            }
+            return false;
         }
 
         public bool SetGroupIdToStudents(GroupViewModel vm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                foreach (var item in vm.StudentCheckList)
+                {
+                    var student = _unitOfWork.GenericRepository<Students>().GetByID(item.Id);
+                    if (item.Selected)
+                    {
+                        student.GroupsId = vm.Id;
+                        _unitOfWork.GenericRepository<Students>().Update(student);
+                    }
+                    else
+                    {
+                        if(student.GroupsId == vm.Id)
+                        {
+                            student.GroupsId = null;
+                        }
+                    }
+                    _unitOfWork.Save();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+            }
+            return false;
         }
 
-        public Task<StudentViewModel> UpdateAsync(StudentViewModel vm)
+        public async Task<StudentViewModel> UpdateAsync(StudentViewModel vm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Students obj = _unitOfWork.GenericRepository<Students>().GetByID(vm.Id);
+                obj.Name = vm.Name;
+                obj.UserName = vm.Name;
+                obj.PictureFileName = vm.PictureFileName != null ? vm.PictureFileName : obj.PictureFileName;
+                obj.CVFileName = vm.CVFileName != null ? vm.CVFileName : obj.CVFileName;
+                obj.Contact = vm.Contact;
+                await _unitOfWork.GenericRepository<Students>().UpdateAsync(obj);
+                _unitOfWork.Save();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return vm;
         }
     }
 }
