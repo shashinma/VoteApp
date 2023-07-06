@@ -73,7 +73,16 @@ namespace VoteApp.BLL.Service
 
         public IEnumerable<Exams> GetAllExams()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var exams = _unitofwork.GenericRepository<Exams>().GetAll();
+                return exams;
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+            }
+            return Enumerable.Empty<Exams>();
         }
     }
 }
