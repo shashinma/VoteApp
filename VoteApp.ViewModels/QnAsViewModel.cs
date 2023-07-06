@@ -7,6 +7,11 @@ namespace VoteApp.ViewModels
 {
 	public class QnAsViewModel
 	{
+        public QnAsViewModel()
+        {
+
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -43,8 +48,11 @@ namespace VoteApp.ViewModels
 
 
         public List<QnAsViewModel> QnAsList { get; set; }
+
         public IEnumerable<Exams> ExamList { get; set; }
+
         public int TotalCount { get; set; }
+
         public int SelectedAnswer { get; set; }
 
 
