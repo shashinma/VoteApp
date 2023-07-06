@@ -19,7 +19,25 @@ namespace VoteApp.BLL.Service
 
         public bool AddTeacher(UserViewModel vm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Users obj = new Users()
+                {
+                    Name = vm.Name,
+                    UserName = vm.UserName,
+                    Password = vm.Password,
+                    Role = (int)EnumRoles.Teacher
+                };
+
+                _unitOfWork.GenericRepository<Users>().AddAsync(obj);
+                _unitOfWork.Save();
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+                return false;
+            }
+            return true;
         }
 
         public PagedResult<UserViewModel> GetAllTeachers(int pageNumber, int pageSize)
@@ -55,7 +73,7 @@ namespace VoteApp.BLL.Service
 
         private List<UserViewModel> ListInfo(List<Users> modelList)
         {
-            throw new NotImplementedException();
+            return modelList.Select(o => new UserViewModel(o)).ToList();
         }
 
         public LoginViewModel Login(LoginViewModel vm)
