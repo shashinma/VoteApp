@@ -1,0 +1,80 @@
+﻿using System;
+using Microsoft.Extensions.Logging;
+using VoteApp.DAL;
+using VoteApp.DAL.UnitOfWork;
+using VoteApp.ViewModels;
+
+namespace VoteApp.BLL.Service
+{
+	public class ExamService : IExamService
+	{
+        IUnitOfWork _unitofwork;
+        ILogger<ExamService> _iLogger;
+
+        public ExamService(IUnitOfWork unitofwork, ILogger<ExamService> iLogger)
+        {
+            _unitofwork = unitofwork;
+            _iLogger = iLogger;
+        }
+
+        public async Task<ExamViewModel> AddAsync(ExamViewModel examVM)
+        {
+            try
+            {
+                Exams objGroup = examVM.ConvertViewModel(examVM);
+                await _unitofwork.GenericRepository<Exams>().AddAsync(objGroup);
+                _unitofwork.Save();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return examVM;
+        }
+
+        public PagedResult<ExamViewModel> GetAll(int pageNumber, int pageSize)
+        {
+            var model = new ExamViewModel();
+            try
+            {
+                int ExcludeRecord = (pageNumber * pageSize) - pageSize;
+                List<ExamViewModel> detailList = new List<ExamViewModel>();
+                var modelList = _unitofwork.GenericRepository<Exams>().GetAll().Skip(ExcludeRecord).Take(pageSize).ToList();
+                var totalCount = _unitofwork.GenericRepository<Exams>().GetAll().ToList();
+                detailList = ExamListInfo(modelList);
+                if (detailList != null)
+                {
+                    model.ExamList = detailList;
+                    model.TotalCount = totalCount.Count();
+                }
+            }
+            catch (Exception ex)
+            {
+                _iLogger.LogError(ex.Message);
+            }
+
+            var result = new PagedResult<ExamViewModel>
+            {
+                Data = model.ExamList,
+                TotalItems = model.TotalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
+
+            return result;
+        }
+
+        private List<ExamViewModel> ExamListInfo(List<Exams> modelList)
+        {
+            return modelList.Select(o => new ExamViewModel(o)).ToList();
+
+        }
+
+        public IEnumerable<Exams> GetAllExams()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
