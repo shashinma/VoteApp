@@ -8,9 +8,11 @@ namespace VoteApp.BLL.Service
 	{
 		PagedResult<QnAsViewModel> GetAll(int pageNumber, int pageSize);
 
-		Task<ExamViewModel> AddAsync(QnAsViewModel examVM);
+		Task<QnAsViewModel> AddAsync(QnAsViewModel QnAVM);
 
-		IEnumerable<QnAs> GetAllExams();
+		IEnumerable<QnAsViewModel> GetAllExams();
+
+		bool IsExamAttended(int examId, int studentId);
 	}
 }
 
