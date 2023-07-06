@@ -11,7 +11,7 @@ namespace VoteApp.ViewModels
         public string Name { get; set; }
 
         [Required]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         public string Password { get; set; }

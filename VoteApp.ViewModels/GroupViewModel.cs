@@ -22,6 +22,8 @@ namespace VoteApp.ViewModels
 
 		public int TotalCount { get; set; }
 
+		public List<StudentCheckBoxListViewModel> StudentCheckList { get; set; }
+
 		public GroupViewModel(Groups model)
 		{
             Id = model.Id;

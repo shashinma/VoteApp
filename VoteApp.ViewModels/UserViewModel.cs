@@ -8,6 +8,10 @@ namespace VoteApp.ViewModels
 {
 	public class UserViewModel
 	{
+        public UserViewModel()
+        {
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -22,6 +26,10 @@ namespace VoteApp.ViewModels
         public string Password { get; set; }
 
         public int Role { get; set; }
+
+        public List<UserViewModel> UserList { get; set; }
+
+        public int TotalCount { get; set; }
 
         public UserViewModel(Users model)
         {

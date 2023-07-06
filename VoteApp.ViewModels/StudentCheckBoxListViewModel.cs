@@ -7,8 +7,7 @@ namespace VoteApp.ViewModels
 
 		public string Name { get; set; }
 
-        public int Selected { get; set; }
-
+        public bool Selected { get; set; }
     }
 }
 
