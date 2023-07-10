@@ -5,6 +5,11 @@ namespace VoteApp.DAL.Data
 {
 	public class ApplicationDbContext : DbContext
 	{
+        public ApplicationDbContext()
+        {
+
+        }
+
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base (options)
 		{
 
@@ -21,6 +26,14 @@ namespace VoteApp.DAL.Data
 		public DbSet<Students> Students { get; set; }
 
 		public DbSet<Users> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("DataSource=app.db;Cache=Shared");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
