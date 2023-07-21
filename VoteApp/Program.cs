@@ -23,7 +23,6 @@ builder.Services.AddTransient<IExamService, ExamService>();
 builder.Services.AddTransient<IQnAService, QnAService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
