@@ -11,14 +11,14 @@ using VoteApp.DAL.Data;
 namespace VoteApp.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230710104533_initial")]
-    partial class Init
+    [Migration("20230731103204_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.9");
 
             modelBuilder.Entity("VoteApp.DAL.ExamResults", b =>
                 {

@@ -4,10 +4,10 @@ using VoteApp.BLL.Service;
 using VoteApp.ViewModels;
 
 namespace VoteApp.Controllers
-{
-	public class UserController : Controller
-	{
-		private readonly IAccountService _accountService;
+{ 
+    public class UserController : Controller 
+    { 
+        private readonly IAccountService _accountService;
 
         public UserController(IAccountService accountService)
         {

@@ -150,7 +150,8 @@ namespace VoteApp.Controllers
 				Directory.CreateDirectory(path);
 			}
 			var filename = Guid.NewGuid().ToString() + "." + pictureFile.FileName.Split(".")
-			[pictureFile.FileName.Split().Length - 1];
+				[pictureFile.FileName.Split().Length - 1];
+			
 			path = Path.Combine(path, filename);
 			using (Stream stream = new FileStream(path, FileMode.Create))
 			{
