@@ -70,4 +70,10 @@
     <Content Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
     <Content Remove="Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
 </Project>
