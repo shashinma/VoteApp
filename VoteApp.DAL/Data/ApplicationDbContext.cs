@@ -15,7 +15,16 @@ namespace VoteApp.DAL.Data
 
 		}
 
-		public DbSet<ExamResults> ExamResults { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("DataSource=app.db;Cache=Shared");
+            }
+        }
+
+        public DbSet<ExamResults> ExamResults { get; set; }
 
 		public DbSet<Exams> Exams { get; set; }
 
@@ -27,13 +36,6 @@ namespace VoteApp.DAL.Data
 
 		public DbSet<Users> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlite("DataSource=app.db;Cache=Shared");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,7 +54,6 @@ namespace VoteApp.DAL.Data
                 entity.Property(e => e.Contact).IsRequired().HasMaxLength(50);
                 entity.Property(e => e.CVFileName).IsRequired().HasMaxLength(250);
                 entity.Property(e => e.PictureFileName).IsRequired().HasMaxLength(250);
-
                 entity.HasOne(d => d.Groups).WithMany(p => p.Students).HasForeignKey(d => d.GroupsId);
             });
 
@@ -64,7 +65,6 @@ namespace VoteApp.DAL.Data
                 entity.Property(e => e.Option3).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Option4).IsRequired().HasMaxLength(250);
                 entity.Property(e => e.Answer).IsRequired();
-
                 entity.HasOne(d => d.Exams).WithMany(p => p.QnAs).HasForeignKey(d => d.ExamsId).OnDelete(DeleteBehavior.ClientSetNull);
             });
 
@@ -72,7 +72,6 @@ namespace VoteApp.DAL.Data
             {
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Description).HasMaxLength(250);
-
                 entity.HasOne(d => d.Users).WithMany(p => p.Groups).HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.ClientSetNull);
             });
 
@@ -80,7 +79,6 @@ namespace VoteApp.DAL.Data
             {
                 entity.Property(e => e.Title).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Description).HasMaxLength(250);
-
                 entity.HasOne(d => d.Groups).WithMany(p => p.Exams).HasForeignKey(d => d.GroupId).OnDelete(DeleteBehavior.ClientSetNull);
             });
 
@@ -89,7 +87,6 @@ namespace VoteApp.DAL.Data
                 entity.HasOne(d => d.Exams).WithMany(p => p.ExamResults).HasForeignKey(d => d.ExamsId);
                 entity.HasOne(d => d.QnAs).WithMany(p => p.ExamResults).HasForeignKey(d => d.QnAsId).OnDelete(DeleteBehavior.ClientSetNull);
                 entity.HasOne(d => d.Students).WithMany(p => p.ExamResults).HasForeignKey(d => d.StudentId).OnDelete(DeleteBehavior.ClientSetNull);
-
             });
 
             base.OnModelCreating(modelBuilder);
