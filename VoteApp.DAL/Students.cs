@@ -1,7 +1,23 @@
 ﻿
 namespace VoteApp.DAL
 {
-	public class Students
+
+    /*
+     * Класс Students содержит поля из таблицы students
+     * 
+     * Id - id в базе данных
+     * Name - имя пользователя на русском
+     * Username - юзернейм пользователя
+     * Password - пароль
+     * Contact - номер телефона
+     * CVFileName - 
+     * PictureFileName - имя фотографии профиля
+     * GroupsId - id группы к которой был отнесен пользователь
+     * Groups - группы в которые был включен пользователь
+     * 
+     */
+
+    public class Students
 	{
         public int Id { get; set; }
 
