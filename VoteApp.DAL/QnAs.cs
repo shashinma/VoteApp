@@ -1,7 +1,23 @@
 ﻿
 namespace VoteApp.DAL
 {
-	public class QnAs
+   /*
+	* Класс QnAs содержит поля из таблицы qnas
+	* 
+	* Id - id в базе данных
+	* ExamId - id экзамена к которому принадлежит данный вопрос
+	* Exams - 
+	* Question - Вопрос
+	* Answer - ответ пользователя
+	* Option1 - опция
+	* Option1 - опция
+	* Option1 - опция
+	* Option1 - опция
+	* ExamResult - результаты экзамена
+	* 
+	*/
+
+    public class QnAs
 	{
 		public int Id { get; set; }
 
