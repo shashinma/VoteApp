@@ -1,15 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using VoteApp.DAL.Data;
 using VoteApp.DAL.UnitOfWork;
 using VoteApp.BLL.Service;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-//    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-// Add services to the container.
 
 builder.Services.AddControllersWithViews();
 
