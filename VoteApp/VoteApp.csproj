@@ -74,6 +74,8 @@
     <None Remove="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Users\" />
+    <_ContentIncludedByDefault Remove="Pages\User\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\User\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Users\Index.cshtml" />
   </ItemGroup>
 </Project>
