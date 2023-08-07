@@ -20,7 +20,7 @@ namespace VoteApp.DAL.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("DataSource=../app.db;Cache=Shared");
+                optionsBuilder.UseSqlite("DataSource=../VoteApp.DAL/app.db;Cache=Shared");
             }
         }
 

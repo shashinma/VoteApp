@@ -12,7 +12,12 @@
 </head>
 <body>
 <div>
-      
+    @foreach (var item in Model.Data)
+    {
+        <div>
+            @Html.DisplayFor(modelItem => item.Name)
+        </div>
+    }
 </div>
 </body>
 </html>
