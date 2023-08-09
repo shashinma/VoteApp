@@ -1,0 +1,63 @@
+@model VoteApp.ViewModels.StudentViewModel
+
+@{
+    ViewData["Title"] = "Students/Profile";
+}
+
+<h1>Create</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Profile" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <img id="imgPicture" src="@Model.PictureFileName" style="width: 64px; width: 64px;" />
+                <input asp-for="PictureFileName" type="file" 
+                       style="position: absolute; top: 0; height: 64px; width: 64px; opacity: 0; z-index: 1000;" />
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control"/>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" class="form-control"/>
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CVFile" class="control-label"></label>
+                @if (Model.CVFileName != null)
+                {
+                    <a href="@Model.CVFileName" target="_blank">Download/View CV</a>
+                }
+                <input asp-for="CVFile" type="file" style="top: 0px;"/>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
