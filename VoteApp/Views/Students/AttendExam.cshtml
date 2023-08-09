@@ -1,0 +1,42 @@
+@model VoteApp.ViewModels.AttendExamViewModel
+
+@{
+    ViewData["Title"] = "Students/AttendExam";
+}
+
+<h1>@Model.ExamName</h1>
+
+<h3>Exam Paper</h3>
+
+@if (Model.Message == "")
+{
+    <form asp-action="AttendExam" asp-controller="Students" method="post">
+        <input type="hidden" asp-for="StudentId" />
+        
+        <ul>
+            @for (int i = 0; i < Model.QnAs.Count; i++)
+            {
+                <input type="hidden" asp-for="@Model.QnAs[i].Id" />
+                <input type="hidden" asp-for="@Model.QnAs[i].ExamsId" />
+                
+                <li>
+                    <label for="@Model.QnAs[i].Question">@Model.QnAs[i].Question</label>
+                </li>
+                
+                <li>
+                    <select asp-for="@Model.QnAs[i].SelectedAnswer" class="form-control">
+                        <option value="1">@Model.QnAs[i].Option1</option>
+                        <option value="2">@Model.QnAs[i].Option2</option>
+                        <option value="3">@Model.QnAs[i].Option3</option>
+                        <option value="4">@Model.QnAs[i].Option4</option>
+                    </select>
+                </li>
+            }
+        </ul>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
+else
+{
+    <p style="font-size: 30px; color: red; text-align: center;">@Model.Message</p>
+}
