@@ -78,4 +78,7 @@
     <_ContentIncludedByDefault Remove="Pages\User\Create.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Users\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\QnAs\" />
+  </ItemGroup>
 </Project>
