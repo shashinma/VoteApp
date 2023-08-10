@@ -1,0 +1,25 @@
+@model VoteApp.ViewModels.GroupViewModel
+
+@{
+    ViewData["Title"] = "Groups/Details";
+}
+
+<h1>@Model.Name</h1>
+
+<h3>Students</h3>
+
+<form asp-action="Details" asp-controller="Groups" method="post">
+    <input type="hidden" asp-for="Id" />
+    <ul>
+        @for (var i = 0; i < Model.StudentCheckList.Count(); i++)
+        {
+            <li>
+                <input type="checkbox" asp-for="@Model.StudentCheckList[i].Selected" />
+                <label for="@Model.StudentCheckList[i].Name">@Model.StudentCheckList[i].Name</label>
+                <input type="hidden" asp-for="@Model.StudentCheckList[i].Id" />
+                <input type="hidden" asp-for="@Model.StudentCheckList[i].Name" />
+            </li>
+        }
+    </ul>
+    <button type="submit" name="action">Update</button>
+</form>
