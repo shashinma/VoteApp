@@ -21,6 +21,7 @@ namespace VoteApp.Controllers
             return View(_examService.GetAll(pageNumber, pageSize));
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             var model = new ExamViewModel();
