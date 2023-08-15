@@ -19,6 +19,7 @@ namespace VoteApp.Controllers
             return View(_accountService.GetAllTeachers(pageNumber, pageSize));
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
