@@ -52,7 +52,7 @@ namespace VoteApp.BLL.Service
             {
                 _iLogger.LogError(ex.Message);
             }
-
+            
             var result = new PagedResult<StudentViewModel>
             {
                 Data = model.StudentList,
@@ -63,7 +63,10 @@ namespace VoteApp.BLL.Service
 
             return result;
         }
-
+        
+        
+        
+        
         private List<StudentViewModel> GroupListInfo(List<Students> modelList)
         {
             return modelList.Select(o => new StudentViewModel(o)).ToList();
