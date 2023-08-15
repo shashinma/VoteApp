@@ -15,6 +15,7 @@ namespace VoteApp.Controllers
             _accountService = accountService;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             LoginViewModel sessionObj = HttpContext.Session.Get<LoginViewModel>("loginvm");
@@ -41,13 +42,14 @@ namespace VoteApp.Controllers
             if (ModelState.IsValid)
             {
                 LoginViewModel loginVM = _accountService.Login(loginViewModel);
+                
                 if(loginVM != null)
                 {
                     HttpContext.Session.Set<LoginViewModel>("loginvm", loginVM);
                     return RedirectUser(loginVM);
                 }
             }
-
+            
             return View(loginViewModel);
         }
 
@@ -61,14 +63,9 @@ namespace VoteApp.Controllers
             {
                 return RedirectToAction("Index", "Exams");
             }
-
+            
             return RedirectToAction("Profile", "Students");
         }
-
-        public IActionResult Index()
-		{
-			return View();
-		}
 	}
 }
 
