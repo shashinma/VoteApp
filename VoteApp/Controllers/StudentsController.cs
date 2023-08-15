@@ -22,12 +22,14 @@ namespace VoteApp.Controllers
 		{
 			return View(_studentService.GetAll(pageNumber, pageSize));
 		}
-
+        
+		[HttpGet]
 		public IActionResult Create()
 		{
 			return View();
 		}
 		
+		[HttpPost]
 		public async Task<IActionResult> Create(StudentViewModel studentViewModel)
 		{
 			if (ModelState.IsValid)
@@ -100,6 +102,7 @@ namespace VoteApp.Controllers
 			return RedirectToAction("Login", "Account");
 		}
 
+		[HttpGet]
 		public IActionResult Profile()
 		{
 			LoginViewModel sessionObj = HttpContext.Session.Get<LoginViewModel>("loginvm");
@@ -120,6 +123,7 @@ namespace VoteApp.Controllers
 			return RedirectToAction("Login", "Account");
 		}
 
+		[HttpPost]
 		public IActionResult Profile([FromForm]StudentViewModel studentViewModel)
 		{
 			if (studentViewModel.PictureFile != null)
