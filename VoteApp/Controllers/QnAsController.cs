@@ -22,6 +22,7 @@ namespace VoteApp.Controllers
 			return View(_qnAService.GetAll(pageNumber, pageSize));
 		}
 
+        [HttpGet]
 		public IActionResult Create()
 		{
 			var model = new QnAsViewModel();
@@ -30,6 +31,7 @@ namespace VoteApp.Controllers
 			return View(model);
 		}
 
+		[HttpPost]
 		public async Task<IActionResult> Create(QnAsViewModel qnViewModel)
 		{
 			if (ModelState.IsValid)
