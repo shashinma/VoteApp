@@ -19,6 +19,7 @@
                 <th>Contact</th>
             </tr>
             </thead>
+            
             <tbody>
             @foreach (var item in Model.Data)
             {
@@ -26,8 +27,8 @@
                 <td>@item.UserName</td>
                 <td>@item.Contact</td>
                 <td>
-                    <a asp-action="Result" asp-controller="Students" 
-                       asp-all-route-data="@(new Dictionary<string, string> { { "studentId", item.Id.ToString() } })" 
+                    <a asp-action="Result" asp-controller="Students"
+                       asp-all-route-data="@(new Dictionary<string, string> { { "studentId", item.Id.ToString() } })"
                        class="btn btn-primary">Result</a>
                 </td>
             }
